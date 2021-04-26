@@ -1,5 +1,6 @@
 #include "utils.hpp"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 bool numInArray(int x, int* ptr, int n){
@@ -76,4 +77,85 @@ bool isSortedDebug(double* data, int dataCount, int* perm){
         if (dataCopy[i] < dataCopy[i-1]) return false;
     }
     return true;
+}
+/*
+bool getPermutation(int n){
+    int* array = new int[n];
+    for (int i = 0; i < n; i++){
+        array[i] = -1;
+    }
+    for(int i = 0; i < n; i++){
+        int temp;
+        cin >> temp;
+        if (temp < 0 || temp >= n || numInArray(temp, array, n)){
+            cout << "permutation is invalid" << endl;
+            array[i] = temp;
+            printArrayInt(array, i+1);
+            delete[] array;
+            return false;
+        }else{
+            array[i] = temp;
+        }
+    }
+    printArrayInt(array, n);
+    delete[] array;
+    return true;
+}
+*/
+
+vector<double> getUserValues(){
+    vector<double> vector;
+    while(1){
+        double temp;
+        cin >> temp;
+        if (!cin.fail()){
+        vector.push_back(temp);
+        }else{
+            cin.clear();
+            cin.ignore();
+            break;
+        }
+        
+    }
+    /*
+    cout << "collected: " << endl;
+    for(size_t i = 0; i < vector.size(); i++){
+        cout << vector.at(i) << endl;
+    }
+    */
+    return vector;
+}
+
+int* getUserPermutation(int n){
+    //cout << "trying to get user permutation for size " << n << endl;
+    int* array = new int[n];
+    for (int i = 0; i < n; i++){
+        array[i] = -1;
+    }
+    for(int i = 0; i < n; i++){
+        //cout << "entered for loop" << endl;
+        int temp;
+        cin >> temp;
+        if (temp < 0 || temp >= n || numInArray(temp, array, n)){
+            //cout << "permutation is invalid" << endl;
+            array[i] = temp;
+            //printArrayInt(array, i+1);
+            return array;
+            delete[] array;
+        }else{
+            array[i] = temp;
+        }
+    }
+    //printArrayInt(array, n);
+    return array;
+    delete[] array;
+}
+
+double* vectorToArrayDouble(vector<double> vector){
+    int n = (int) vector.size();
+    double* array = new double[n];
+    for(int i = 0; i < n; i++){
+        array[i] = vector[i];
+    }
+    return array;
 }
