@@ -67,13 +67,13 @@ string gameChoiceToString(int i){
 bool play(){
     bool gotValidUserInput = false;
     bool gameHasResult = false;
-    int userInput;
-    int computerChoice;
+    int userInput = -1;
+    int computerChoice = -1;
 
     while(!gameHasResult){
         cout << "Please enter your choice: [1] Rock, [2] Paper, [3] Scissors" << endl;
-        cin >> userInput;
         while (!gotValidUserInput){
+            cin >> userInput;
             if (userInput >= 1 && userInput <= 3){
                 gotValidUserInput = true;
             }
