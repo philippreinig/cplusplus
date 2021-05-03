@@ -1,5 +1,3 @@
-#pragma once
-
 #include <ctime> // Use the function std::clock() to measure time.
 #include <string>
 
@@ -16,5 +14,4 @@ private:
         int start;
         int end;  
         int indents;    
-    // ToDo: Data members?
 };

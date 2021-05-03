@@ -1,5 +1,5 @@
-#include "scopetimer.hpp"
 #include <cstdlib>
+#include "scopetimer.hpp"
 
 /* TODO:
  *
@@ -58,13 +58,12 @@ int work03( int n0, int n1 )
     return freq;
 }
 
-int main(int, char**)
-
-{
+int main(){
     ScopeTimer st1("work01", 0);
     work01();
     ScopeTimer st2("work02", 1);
     work02();
     ScopeTimer st3("work03", 2);
     work03(0, 10000);
+    return 0;
 }

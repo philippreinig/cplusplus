@@ -6,7 +6,7 @@
 using namespace::std;
 
 double cpuTimeToMS(int cpuTime){
-    return cpuTime / (double) CLOCKS_PER_SEC;
+    return 1000 * cpuTime / (double) CLOCKS_PER_SEC;
 }
 
 ScopeTimer::ScopeTimer(string functionName, int indents){
@@ -16,7 +16,7 @@ ScopeTimer::ScopeTimer(string functionName, int indents){
             for(int i = 0; i < this -> indents; i++){
                 cout << "   ";
             }
-            cout << "function " << functionName << " started at " << start << "(" << cpuTimeToMS(start) << " ms)" << endl;
+            cout << "function " << functionName << " started at " << cpuTimeToMS(start) << " ms" << endl;
         }
 
 ScopeTimer::~ScopeTimer(){
@@ -25,6 +25,6 @@ ScopeTimer::~ScopeTimer(){
             for(int i = 0; i < this -> indents; i++){
                 cout << "   ";
             }
-            cout << "function " << functionName << " ended at " << end << "(" << cpuTimeToMS(end) << " ms)" << " -> function took " << difference  << "(" << cpuTimeToMS(difference) << " ms)" <<endl;
+            cout << "function " << functionName << " ended at " << cpuTimeToMS(end) << " ms" << " -> function took " << cpuTimeToMS(difference) << " ms" <<endl;
         }  
 
