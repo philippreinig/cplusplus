@@ -1,13 +1,11 @@
-cmake_minimum_required(VERSION 3.20.1)
-project("ScopeTimer")
+cmake_minimum_required(VERSION 3.0.0)
+project(scopetimer VERSION 0.1.0)
 
-set (CMAKE_CXX_STANDARD 14)
-set (CMAKE_CXX_STANDARD_REQUIRED ON)
+include(CTest)
+enable_testing()
 
-if(NOT MSVC)
-	add_compile_options(-Wall)
-	add_compile_options(-Wextra)
-	add_compile_options(-pedantic)
-endif(NOT MSVC)
+add_executable(scopetimer main.cpp)
 
-add_executable(main.cpp scopetimer.cpp scopetimer.hpp)
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
