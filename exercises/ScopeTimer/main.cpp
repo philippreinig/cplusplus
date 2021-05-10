@@ -1,5 +1,5 @@
 #include <cstdlib>
-#include "scopetimer.hpp"
+#include "scopetimer.cpp"
 
 /* TODO:
  *
