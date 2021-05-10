@@ -1,3 +1,6 @@
 .vscode/launch.json
 .vscode/tasks.json
 test.exe
+exercises/ScopeTimer/.vscode/
+exercises/ScopeTimer/build/
+exercises/ScopeTimer/scopetimer.exe
