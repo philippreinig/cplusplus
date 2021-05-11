@@ -15,8 +15,8 @@ int main() {
 
   cout << "size()=" << s1.size() << endl;
 
-  ImmutableString s2(" world!");
-  ImmutableString s3 = s1.concat(s2);
+  const ImmutableString s2(" world!");
+  const ImmutableString s3 = s1.concat(s2);
 
   cout << s3.c_str() << endl;
   cout << "size()=" << s3.size() << endl;
