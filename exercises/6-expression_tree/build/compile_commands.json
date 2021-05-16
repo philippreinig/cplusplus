@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/philipp/Development/cplusplus/cplusplus/exercises/6-expression_tree/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -Wall -Wextra -pedantic -o CMakeFiles/a05.dir/exptree.cpp.o -c /home/philipp/Development/cplusplus/cplusplus/exercises/6-expression_tree/exptree.cpp",
+  "file": "/home/philipp/Development/cplusplus/cplusplus/exercises/6-expression_tree/exptree.cpp"
+},
+{
+  "directory": "/home/philipp/Development/cplusplus/cplusplus/exercises/6-expression_tree/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -Wall -Wextra -pedantic -o CMakeFiles/a05.dir/main.cpp.o -c /home/philipp/Development/cplusplus/cplusplus/exercises/6-expression_tree/main.cpp",
+  "file": "/home/philipp/Development/cplusplus/cplusplus/exercises/6-expression_tree/main.cpp"
+}
+]
