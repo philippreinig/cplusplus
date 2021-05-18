@@ -1,1 +1,0 @@
-/bin/x86_64-linux-gnu-g++-9    -rdynamic CMakeFiles/scopetimer.dir/main.cpp.o  -o scopetimer 

@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/philipp/Development/cplusplus/cplusplus/exercises/ScopeTimer/build",
-  "command": "/bin/c++    -g   -o CMakeFiles/scopetimer.dir/main.cpp.o -c /home/philipp/Development/cplusplus/cplusplus/exercises/ScopeTimer/main.cpp",
-  "file": "/home/philipp/Development/cplusplus/cplusplus/exercises/ScopeTimer/main.cpp"
-}
-]
