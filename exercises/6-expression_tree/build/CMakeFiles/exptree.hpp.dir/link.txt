@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\exptree.hpp.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\ar.exe cr CMakeFiles\exptree.hpp.dir/objects.a @CMakeFiles\exptree.hpp.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\X86_64~2.EXE -g -Wl,--whole-archive CMakeFiles\exptree.hpp.dir/objects.a -Wl,--no-whole-archive -o exptree.hpp.exe -Wl,--out-implib,libexptree.hpp.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\exptree.hpp.dir\linklibs.rsp
