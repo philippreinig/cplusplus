@@ -1,1 +1,0 @@
-/bin/x86_64-linux-gnu-g++-9  -g  -rdynamic CMakeFiles/a05.dir/exptree.cpp.o CMakeFiles/a05.dir/main.cpp.o  -o a05 

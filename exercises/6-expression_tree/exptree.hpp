@@ -15,17 +15,22 @@ namespace ExpTree{
 // in the expression tree.
 class Variable
 {
-public:
-    // Constructs a variable with the given name.
-    Variable(const char* _name) : name{_name}{}
+    public:
+        // Constructs a variable with the given name.
+        Variable(const char* name_);
 
-    // Store the name as a std::string for easy comparison
-    const std::string name;
+        Variable& operator=(double const& value_);
 
-    // TODO: Implement an assignment operator to set and a conversion operator
-    // to double to get the value.
-private:
-    double value;
+        operator double() const;
+        
+        std::string get_name() const;
+
+        // TODO: Implement an assignment operator to set and a conversion operator
+        // to double to get the value.
+    private:
+        const std::string name;
+        // Store the name as a std::string for easy comparison
+        double value;
 };
 
 
@@ -42,29 +47,50 @@ public:
      * TODO: Implement this function for all node types.
      *       Make sure that the right one is called when operating with Node*.
      */
-    double evaluate(const Variable* vars, int numVars) const = 0;
+    virtual double evaluate(const Variable* vars, int numVars) const = 0;
+    virtual ~Node(){};
+
 };
 
 // A base class for binary operators.
 // TODO: Use this class to correctly delete subnodes on destruction.
-class BinOpNode
+class BinOpNode : public Node
 {
-public:
+    public:
+        BinOpNode(Node* left_, Node* right_); //Has to be Node*
+        virtual double evaluate(const Variable* vars, int numVars) const = 0;
+        ~BinOpNode();
+    protected:
+        Node *left;
+        Node *right;
 };
 
 // Calculates the sum of the two operands.
-class SumNode
+class SumNode : public BinOpNode
 {
+    public:
+        SumNode(Node* left_, Node* right_);
+        virtual double evaluate(const Variable* vars, int numVars) const override;
+    
 };
 
 // Calculates the product of the two operands.
-class MulNode
+class MulNode : public BinOpNode
 {
+    public:
+        MulNode(Node* left_, Node* right_);
+        virtual double evaluate(const Variable* vars, int numVars) const override;
 };
 
 // Represents a variable in the tree.
-class VarNode
+class VarNode : public Node
 {
+    public:
+        VarNode(const char* name_);
+        virtual double evaluate(const Variable* vars, int numVars) const override;
+        ~VarNode();
+    private:
+        Variable* var = nullptr;
+        
 };
-
-}
+    }

@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(a05 VERSION 0.0.0)
+project(6-expression_tree VERSION 0.1.0)
 
-add_executable(a05 exptree.cpp main.cpp)
+include(CTest)
+enable_testing()
 
-target_compile_options(a05 PRIVATE -Wall -Wextra -pedantic)
+add_executable(exptree.hpp exptree.cpp)
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
