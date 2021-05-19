@@ -1,5 +1,4 @@
- *.vscode/
- vscode/
- *.exe
- *build/
- *CMakeLists.txt
+*build/
+*.vscode/
+*CMakeLists.txt
+*.out

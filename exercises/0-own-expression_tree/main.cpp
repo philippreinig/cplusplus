@@ -22,25 +22,15 @@ class Variable{
 
 };
 
-class BinOpNode{
 
-    public:
-        BinOpNode(){}
-        BinOpNode(VariableNode left_, VariableNode right_) : left(left_), right(right_){}
-    protected:
-        VariableNode left;
-        VariableNode right;    
-
-};
-
-class VariableNode : BinOpNode{
+class VariableNode{
 
     public:
         VariableNode(){}
         VariableNode(Variable var_) : var(var_){
         }
 
-        Variable getVariable(){
+        Variable getVariable() const {
             return this->var;
         }
 
@@ -50,20 +40,20 @@ class VariableNode : BinOpNode{
         Variable var;
 };
 
-class SumNode : BinOpNode{
+class SumNode{
 
     public:
         SumNode(VariableNode left_, VariableNode right_) : left(left_), right(right_){}
 
-        double getValue(){
+        double getValue() const{
             return double(left.getVariable()) + double(right.getVariable());
         }
 
-        VariableNode getLeft(){
+        VariableNode getLeft ()const {
             return this->left;
         }
 
-        VariableNode getRight(){
+        VariableNode getRight () const{
             return this->right;
         }
 
@@ -72,71 +62,33 @@ class SumNode : BinOpNode{
         VariableNode right;
 };
 
-class DivideNode : BinOpNode{
-
-    public:
-        DivideNode(VariableNode left_, VariableNode right_) : left(left_), right(right_){}
-
-        double getValue(){
-            return double(left.getVariable()) / double(right.getVariable());
-        }
-
-        VariableNode getLeft(){
-            return this->left;
-        }
-
-        VariableNode getRight(){
-            return this->right;
-        }
-
-    private:
-        VariableNode left;
-        VariableNode right;
-};
-
-class MinusNode : BinOpNode{
-
-    public:
-        MinusNode(VariableNode left_, VariableNode right_) : left(left_), right(right_){}
-
-        double getValue(){
-            return double(left.getVariable()) - double(right.getVariable());
-        }
-
-        VariableNode getLeft(){
-            return this->left;
-        }
-
-        VariableNode getRight(){
-            return this->right;
-        }
-
-    private:
-        VariableNode left;
-        VariableNode right;
-};
-
-class MultNode : BinOpNode{
+class MultNode{
 
     public:
         MultNode(VariableNode left_, VariableNode right_) : left(left_), right(right_){}
 
-        double getValue(){
+        double getValue() const
+        {
             return double(left.getVariable()) * double(right.getVariable());
         }
 
-        VariableNode getLeft(){
+        VariableNode getLeft() const {
             return this->left;
         }
 
-        VariableNode getRight(){
+        VariableNode getRight() const{
             return this->right;
         }
 
     private:
-        VariableNode left;
-        VariableNode right;
+        const VariableNode left;
+        const VariableNode right;
 };
+
+template<typename T>
+void printNode(const T& node) {
+    std::cout << "debug: Node: left " << double(node.getLeft().getVariable()) << ", right: " << double(node.getRight().getVariable()) << ", result: " << node.getValue() << std::endl;
+}
 
 
 void printSumNode(SumNode sn){
@@ -145,45 +97,48 @@ void printSumNode(SumNode sn){
 void printMultNode(MultNode mult_node){
     std::cout << "debug: MultNode: left " << double(mult_node.getLeft().getVariable()) << ", right: " << double(mult_node.getRight().getVariable()) << ", sum: " << mult_node.getValue() << std::endl;
 }
-void printDivideNode(DivideNode division_node){
-    std::cout << "debug: DivideNode: left " << double(division_node.getLeft().getVariable()) << ", right: " << double(division_node.getRight().getVariable()) << ", sum: " << division_node.getValue() << std::endl;
-}
-void printMinusNode(MinusNode minus_node){
-    std::cout << "debug: MinusNode: left " << double(minus_node.getLeft().getVariable()) << ", right: " << double(minus_node.getRight().getVariable()) << ", sum: " << minus_node.getValue() << std::endl;
-}
+// void printDivideNode(DivideNode division_node){
+//     std::cout << "debug: DivideNode: left " << double(division_node.getLeft().getVariable()) << ", right: " << double(division_node.getRight().getVariable()) << ", sum: " << division_node.getValue() << std::endl;
+// }
+// void printMinusNode(MinusNode minus_node){
+//     std::cout << "debug: MinusNode: left " << double(minus_node.getLeft().getVariable()) << ", right: " << double(minus_node.getRight().getVariable()) << ", sum: " << minus_node.getValue() << std::endl;
+// }
 
 
 
 int main(){
-    Variable var1("var1", 3.0);
-    Variable var2("var2", -7.0);
+    const Variable var1("var1", 3.0);
+    const Variable var2("var2", -7.0);
     
-    VariableNode var_node_1(var1);
-    VariableNode var_node_2(var2);
+    const VariableNode var_node_1(var1);
+    const VariableNode var_node_2(var2);
 
-    SumNode sum_node_1(var_node_1, var_node_2);
-    SumNode sum_node_2(var_node_2, var_node_1);
+    const SumNode sum_node_1(var_node_1, var_node_2);
+    const SumNode sum_node_2(var_node_2, var_node_1);
 
-    MinusNode minus_node_2(var_node_1, var_node_2);
-    MinusNode minus_node_1(var_node_2, var_node_1);
+    // const MinusNode minus_node_2(var_node_1, var_node_2);
+    // const MinusNode minus_node_1(var_node_2, var_node_1);
 
-    MultNode mult_node_1(var_node_1, var_node_2);
-    MultNode mult_node_2(var_node_2, var_node_1);
+    const MultNode mult_node_1(var_node_1, var_node_2);
+    const MultNode mult_node_2(var_node_2, var_node_1);
 
-    DivideNode divide_node_1(var_node_1, var_node_2);
-    DivideNode divide_node_2(var_node_2, var_node_1);
+    // const DivideNode divide_node_1(var_node_1, var_node_2);
+    // const DivideNode divide_node_2(var_node_2, var_node_1);
 
-    printSumNode(sum_node_1);
-    printSumNode(sum_node_2);
+    printNode(sum_node_1);
+    printNode(mult_node_1);
 
-    printMinusNode(minus_node_1);
-    printMinusNode(minus_node_2);
+    // printSumNode(sum_node_1);
+    // printSumNode(sum_node_2);
 
-    printMultNode(mult_node_1);
-    printMultNode(mult_node_2);
+    // printMinusNode(minus_node_1);
+    // printMinusNode(minus_node_2);
 
-    printDivideNode(divide_node_1);
-    printDivideNode(divide_node_2);
+    // printMultNode(mult_node_1);
+    // printMultNode(mult_node_2);
+
+    // printDivideNode(divide_node_1);
+    // printDivideNode(divide_node_2);
 
 
     return 0;
