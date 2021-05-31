@@ -39,10 +39,6 @@ namespace Math{
 
         Vector<T, n> operator+(Vector<T, n>& other)
         {
-
-            for(int i = 0; i < n; i++){
-            }
-
             Vector<T, size> temp_vec; 
             for(int i = 0; i < n; i++){
                 temp_vec[i] = this->data[i] + other[i];
