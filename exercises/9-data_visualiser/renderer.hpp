@@ -26,6 +26,7 @@ public:
 
     void erase(PointContainer& points);
 
+
 private:
     int m_rows;
     int m_colums;
