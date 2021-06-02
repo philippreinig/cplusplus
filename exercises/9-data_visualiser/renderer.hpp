@@ -20,6 +20,12 @@ public:
      */
     void draw(PointContainer& points);
 
+    void remove_duplicates(PointContainer& points);
+
+    void sort(PointContainer& points);
+
+    void erase(PointContainer& points);
+
 private:
     int m_rows;
     int m_colums;
