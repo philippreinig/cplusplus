@@ -28,10 +28,10 @@ void Renderer::erase(PointContainer& points){
     // std::cout << "size of PointContainer before erasing: " << points.size() << std::endl;
     int counter = 0;
     PointContainer temp;
-    for(long unsigned int i=0; i < points.size(); i++){
+    for(size_t i=0; i < points.size(); i++){
         if (temp.empty()) temp.push_back(points[i]);
         else{
-            for(long unsigned int j=0; j < temp.size(); j++){
+            for(size_t j=0; j < temp.size(); j++){
                 if(points[i] == temp[j]){
                     counter++;
                     // std::cout << "found same points!:" << "(" << points[i].x << "|" << points[i].y << ")" << std::endl;

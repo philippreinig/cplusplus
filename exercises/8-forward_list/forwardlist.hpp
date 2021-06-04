@@ -103,7 +103,7 @@ public:
             Iterator copy(this->current_node);
             current_node = current_node->next;
             return copy;
-         }
+        }
 
         /// Returns true if two iterators refer to the same elements in the list.
         bool operator==(const Iterator& other) const{
@@ -125,12 +125,11 @@ public:
     };
 
     /// Default constructor creates an empty list
-    ForwardList(){
-        head = nullptr;
+    ForwardList() : head(nullptr){
     }
-    ForwardList(const ForwardList& other){
-        this->head = other.head->clone();
-    }
+
+    ForwardList(const ForwardList& other) : head(other.head->clone()){}
+
     /// Destructor makes sure that all Nodes are correctly destroyed
     ~ForwardList(){
         delete head;
