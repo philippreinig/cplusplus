@@ -8,9 +8,11 @@ struct Point
     int y;
 
     bool operator<(const Point& other){
-        if (this-> y < other.y) return true;
-        else if (this-> y > other.y) return false;
-        else return (this -> x < other.x);
+        if (this->y < other.y) return true;
+        else return this->y == other.y && this->x < other.x;
+        // if (this-> y < other.y) return true;
+        // else if (this-> y > other.y) return false;
+        // else return (this -> x < other.x);
     }
 
     bool operator==(const Point& other){

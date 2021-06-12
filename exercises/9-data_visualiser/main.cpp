@@ -21,8 +21,8 @@ int main()
     parser.parse(file_reader, pc);  
 
     Renderer renderer(0, 0);
-    renderer.erase(pc);
-    renderer.sort(pc);
+    // renderer.erase(pc);
+    // renderer.sort(pc);
     renderer.draw(pc);
     return 0;
 

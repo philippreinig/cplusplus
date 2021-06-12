@@ -34,7 +34,7 @@ void Renderer::erase(PointContainer& points){
             for(size_t j=0; j < temp.size(); j++){
                 if(points[i] == temp[j]){
                     counter++;
-                    // std::cout << "found same points!:" << "(" << points[i].x << "|" << points[i].y << ")" << std::endl;
+                    std::cout << "found same points!:" << "(" << points[i].x << "|" << points[i].y << ")" << std::endl;
                     points.erase(points.begin()+i);
                     break;
                 }
@@ -49,6 +49,8 @@ void Renderer::erase(PointContainer& points){
 
 void Renderer::draw(PointContainer& points)
 {
+    erase(points);
+    sort(points);
     int max_x = 0;
     int max_y = 0;
     for (Point p : points){
@@ -76,7 +78,7 @@ void Renderer::draw(PointContainer& points)
         std::cout << std::endl;
     }
 
-    // delete[] array;
+    delete[] array;
 
     // std::cout << "max_x: " << max_x << std::endl;
     // std::cout << "max_y: " << max_y << std::endl;
