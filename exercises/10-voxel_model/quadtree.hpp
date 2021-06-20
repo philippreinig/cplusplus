@@ -21,7 +21,9 @@ public:
     // Performs a pre traversel calling Processor::process() on every node
 	// and Processor::processLeaf() on all leafes.
     template<class Processor>
-    void traverse(Processor& proc) { m_rootNode->traverse(m_rootSize, proc); }
+    void traverse(Processor& proc) {
+        m_rootNode->traverse(m_rootSize, proc);
+        }
 private:
     class Node
     {

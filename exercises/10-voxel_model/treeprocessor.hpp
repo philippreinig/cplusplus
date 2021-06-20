@@ -8,6 +8,8 @@
 #include "data.hpp"
 #include "quadtree.hpp"
 
+// GRUPPENEINREICHUNG MIT DANNY SCHMIDT
+
 
 // tree traverse processor that draws all components with the given renderer
 struct DrawProcessor
@@ -15,7 +17,7 @@ struct DrawProcessor
     DrawProcessor(Graphic::Renderer& _renderer) : renderer(_renderer) {}
         
     void processLeaf(const Voxel& voxel);
-    void process(int size, Voxel* voxel){}
+    void process(int /*size */, Voxel* /*voxel*/){}
 private:
     Graphic::Renderer& renderer;
 };
@@ -23,12 +25,22 @@ private:
 
 // todo: Add a specialisation for std::hash.
 
+namespace std{
+    template<>
+    struct hash<Math::IVec2>
+    {
+        std::size_t operator()(const Math::IVec2& ivec2) const{
+            return hashFunc(ivec2);
+        }
+    };
+}
+
 // A processor that traverses the tree and adds all leafes to a given VoxelMap.
 // todo: implement
-typedef std::unordered_map< Math::IVec2, Voxel > VoxelMap;
+typedef std::unordered_map<Math::IVec2, Voxel> VoxelMap;
 struct FlattenProcessor
 {
-	FlattenProcessor(VoxelMap& voxelMap);
+	FlattenProcessor(VoxelMap& voxel_map_); 
 	
 	// Process function that is only called on leafes.
     void processLeaf(const Voxel& voxel);
@@ -37,8 +49,14 @@ struct FlattenProcessor
 	// The given size is the level of the node in the tree,
 	// where on level 0 the leafes are fonud.
 	// This functionality is not needed for this task.
-    void process(int size, const Voxel* voxel) {}
+    void process(int /*size*/, const Voxel* /* voxel*/) {
+    }
+
+    VoxelMap get_map(){
+        return this->voxel_map;
+    }
 private:
+    VoxelMap voxel_map;
 };
 
 // Extracts a single coherent model from the map and puts it into the target tree.
