@@ -113,7 +113,3 @@ namespace Math{
     }
 
 }
-
-// bool operator==(const Math::IVec2& ivec2lhs, const Math::IVec2& ivec2rhs){
-// return ivec2lhs[0] == ivec2rhs[0] && ivec2lhs[1] == ivec2rhs[1];
-// }

@@ -52,11 +52,11 @@ struct FlattenProcessor
     void process(int /*size*/, const Voxel* /* voxel*/) {
     }
 
-    VoxelMap get_map(){
+    VoxelMap get_map() const{
         return this->voxel_map;
     }
-private:
     VoxelMap voxel_map;
+private:
 };
 
 // Extracts a single coherent model from the map and puts it into the target tree.

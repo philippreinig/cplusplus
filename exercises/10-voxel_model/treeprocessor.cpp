@@ -99,22 +99,17 @@ void extractSubModels(QuadTree<Voxel>& tree, vector<unique_ptr<QuadTree<Voxel>>>
     FlattenProcessor flatten_processor(map);
     tree.traverse(flatten_processor);
 
-    VoxelMap filled_map = flatten_processor.get_map();
+    // VoxelMap filled_map = flatten_processor.get_map();
     // std::cout << "after traversing with FlattenProcessor size of map is: " << map.size() << std::endl;
     // std::cout << "size of map of flatten processor is: " << flatten_processor.get_map().size() << std::endl;
 
     QuadTree<Voxel>* voxel_quad_tree;
 
 
-    int counter = 0; 
-    while(extract(filled_map, *(voxel_quad_tree = new QuadTree<Voxel>))){
+    while(extract(flatten_processor.voxel_map, *(voxel_quad_tree = new QuadTree<Voxel>))){
         // std::cout << "extracting subtree " << counter << std::endl;
-        ++counter;
         subTrees.push_back(unique_ptr<QuadTree<Voxel>>(voxel_quad_tree));
     }
 
     delete voxel_quad_tree;
-
-
-
 }

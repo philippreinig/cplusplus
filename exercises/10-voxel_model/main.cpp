@@ -54,15 +54,13 @@ int main()
     // display extracted submodels
     std::cout << std::endl;
     // std::cout << "found " << subTrees.size() << " subtress" << std::endl;
-    int counter = 0;
     for(auto& t : subTrees)
     {
         // std::cout << "subtree " << counter << std::endl;
-        ++counter;
         renderer.clear();
         t->traverse(drawProcessor);
         renderer.swap();
     }
 
-    return 0;
+    return 1;
 }
