@@ -52,10 +52,7 @@ struct FlattenProcessor
     void process(int /*size*/, const Voxel* /* voxel*/) {
     }
 
-    VoxelMap get_map() const{
-        return this->voxel_map;
-    }
-    VoxelMap voxel_map;
+    VoxelMap& voxel_map;
 private:
 };
 

@@ -30,35 +30,20 @@ bool voxel_contained_in_vector(Voxel voxel, std::vector<Voxel>* vector){
 }
 
 void get_all_voxels_in_component(Voxel voxel, VoxelMap& map, std::vector<Voxel>* vector){
-    // std::cout << "get_all_voxels_in_component of voxel at: " << voxel.position[0] << ", " << voxel.position[1] << std::endl;
     IVec2 voxel_position = voxel.position;
-    IVec2 top(voxel_position[0], voxel_position[1] + 1);
-    IVec2 right(voxel_position[0] + 1, voxel_position[1]);
-    IVec2 bottom(voxel_position[0], voxel_position[1] - 1);
-    IVec2 left(voxel_position[0] - 1, voxel_position[1]);
-    
-    // std::cout << "top, right, bottom, left created" << std::endl;
+    IVec2 X{1, 0};
+    IVec2 Y{0, 1};
+    IVec2 top = voxel_position + Y;
+    IVec2 right = voxel_position + X;
+    IVec2 bottom = voxel_position - Y;
+    IVec2 left = voxel_position - X;
+    IVec2 neighbours[4]{top, right, bottom, left};
 
-    vector->push_back(map[voxel_position]);
-
-    if (map.find(top) != map.end() && !voxel_contained_in_vector(map[top], vector)){
-        vector->push_back(map[top]);
-        get_all_voxels_in_component(map[top], map, vector);
-    }
-    if (map.find(right) != map.end() && !voxel_contained_in_vector(map[right], vector)){
-        vector->push_back(map[right]);
-        get_all_voxels_in_component(map[right], map, vector);
-        map.erase(right);
-    }
-    if (map.find(bottom) != map.end() && !voxel_contained_in_vector(map[bottom], vector)){
-        vector->push_back(map[bottom]);
-        get_all_voxels_in_component(map[bottom], map, vector);
-        map.erase(bottom);
-    }
-    if (map.find(left) != map.end() && !voxel_contained_in_vector(map[left], vector)){
-        vector->push_back(map[left]);
-        get_all_voxels_in_component(map[left], map, vector);
-        map.erase(left);
+    for(IVec2 neighbour : neighbours){
+        if (map.find(neighbour) != map.end() && !voxel_contained_in_vector(map[neighbour], vector)){
+        vector->push_back(map[neighbour]);
+        get_all_voxels_in_component(map[neighbour], map, vector);
+        }
     }
 }
 // Extracts a single connected model from the map and puts it into the target tree.
