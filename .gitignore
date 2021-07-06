@@ -2,4 +2,4 @@
 *.vscode/
 *CMakeLists.txt
 *.out
-
+*.exe
