@@ -5,7 +5,7 @@ class Target{
     public:
 
         virtual void getAttacked(int pow);
-        void attack(Target& target);
+        virtual void attack(Target& target, int pow);
 
     
     protected:
@@ -16,12 +16,32 @@ class Target{
         void explode();
 
     private:
-        Target(std::string name, int pos);
+        Target(std::string name_, int pos_);
+        ~Target();
 
 };
 
 class Spaceship : Target{
+    public: 
+        using Target::Target(std::string name_, int pos_);
+
     protected:
         void getAttacked(int pow) override;
+        int amnt_lasers;
+        int shield;
+};
+
+class Planet : Target{
+    protected:
+        void getAttacked(int pow) override;
+    private:
+        void attack(Target& target, int pow) override;
+};
+
+class Deathstar : Spaceship{
+
+
+
+
 
 };

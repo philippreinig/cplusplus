@@ -1,7 +1,6 @@
 #include <random>
 #include <iostream>
 #include <ctime>
-using namespace std;
 
 int getRandomInt(int amount){
     return rand() % amount;
@@ -22,13 +21,13 @@ int main(){;
     long amountSimulations = LONG_MAX;
     long data[amountNumbers] = {0};
     long* results = analyse(data, amountNumbers, amountSimulations);
-    cout << LONG_MAX << endl;
+    std::cout << LONG_MAX << std::endl;
     long resultChecker = 0;
     for(long i = 0; i < amountNumbers; i++){
-        cout << i << ": " << results[i] << endl;
+        std::cout << i << ": " << results[i] << std::endl;
         resultChecker += results[i];
     }
     //cout << "amountNumbers: " << amountSimulations << ", resultChecker: " << resultChecker << endl;
-    cout << "resultsValid: " << (amountSimulations  == resultChecker) << endl;
+    std::cout << "resultsValid: " << (amountSimulations  == resultChecker) << std::endl;
     return 0;
 }
