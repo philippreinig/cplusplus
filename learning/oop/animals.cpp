@@ -55,16 +55,16 @@ int main(){
     }
     */
 
-    std:: cout << typeid(lion).name() << ": ";
+    std::cout << typeid(lion).name() << ": ";
     lion.make_sound();
 
-    std:: cout << typeid(cat).name() << ": ";
+    std::cout << typeid(cat).name() << ": ";
     cat.make_sound();
 
-    std:: cout << typeid(fish).name() << ": ";
+    std::cout << typeid(fish).name() << ": ";
     fish.make_sound();
 
-    std:: cout << typeid(animal).name() << ": ";
+    std::cout << typeid(animal).name() << ": ";
     animal.make_sound();
 
     
