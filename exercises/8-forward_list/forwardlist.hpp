@@ -206,7 +206,7 @@ public:
     /// Returns an Iterator to the newly inserted element
     Iterator insert_after(Iterator pos, T& value){
         Node* new_node = new Node(value, pos.node->next);
-        pos.node = new_node;
+        pos.node->next = new_node;
         return ++pos;
     }
 
